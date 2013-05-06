@@ -1,7 +1,7 @@
 {
     "name": "mykehsd/responsys",
     "minimum-stability": "dev",
-    "keywords": ["responsys", "api", "email"]
+    "keywords": ["responsys", "api", "email"],
     "license": "MIT",
     "require": {
         "php":                  ">=5.3.2",
