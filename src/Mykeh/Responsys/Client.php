@@ -81,7 +81,6 @@ class Client
 		try {
 			$result = $this->client->login ($args);
 			$this->sessionId = $result->result->sessionId;
-print_r($result);
 
 			$session_header = new SoapVar(
 				array(
@@ -118,10 +117,19 @@ print_r($result);
 
 		$args = new stdClass();
 		$args->formName = $form;
-		$args->formData = $data;
+
+		$args->formData = array();
+		foreach ($data as $key => $value)
+		{
+			$formData = new stdClass();
+			$formData->name = $key;
+			$formData->value = $value;
+			$args->formData[] = $formData;
+		}
 
 		try {
 			$this->client->triggerFormRules($args);
+			return true;
 		} catch (SoapFault $e) {
 			throw new ResponsysException("Could not submit form");
 		}
