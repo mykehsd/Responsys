@@ -30,7 +30,9 @@ $client->createFolder("My New Folder");
 
 #Create Datasource
 $client->createDataSource("ds_name", array(
-	"EMAIL_ADDRESS" => "test@example.com",
+	array(
+		"EMAIL_ADDRESS" => "test@example.com",
+	)
 ), 'My New Folder');
 
 #Trigger form submission
